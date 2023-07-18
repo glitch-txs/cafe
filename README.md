@@ -3,7 +3,7 @@
 ### Install
 
 npm
-````bash
+```bash
 npm i react-cafe
 ```
 
