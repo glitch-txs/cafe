@@ -1,13 +1,14 @@
-import { store } from '@/store/store'
+import { store } from '@/store'
 import React from 'react'
 
 const SyncA = () => {
 
   const count = store.count()
+  console.log("Render A")
 
   return (
     <div>
-      <button onClick={()=>store.set.count((v: number) => v + 1)} >Sync A</button>
+      <button onClick={()=>store.set.count(p => p + 1)} >Sync A</button>
       {count}
     </div>
   )
