@@ -14,16 +14,20 @@ export const store = createStore<MyStore>({
 ```
 
 ```tsx
-import { store } from '@/store/store'
+import { store } from '@/store'
 import React from 'react'
 
 const Count = () => {
 
   const count = store.count()
 
+  const increment = ()=>{
+    store.set.count((v: number) => v + 1)
+  }
+
   return (
     <div>
-      <button onClick={()=>store.set.count((v: number) => v + 1)} >Increment</button>
+      <button onClick={increment} >Increment</button>
       Count: {count}
     </div>
   )
