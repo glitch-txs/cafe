@@ -8,7 +8,7 @@ const SyncB = () => {
 
   return (
     <div>
-      <button onClick={()=>store.set.name(p => p + 'c')} >Sync B</button>
+      <button onClick={()=>store.set.name(p => p + 'c')} >String</button>
       {name}
     </div>
   )
