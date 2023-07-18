@@ -1,0 +1,49 @@
+{
+  "name": "react-cafe",
+  "version": "0.0.0",
+  "description": "React Café is a global state manager for React applications.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "upload": "npm run build && npm publish --public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glitch-txs/react-cafe.git"
+  },
+  "keywords": [
+    "store",
+    "global",
+    "react"
+  ],
+  "author": "glitch-txs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glitch-txs/react-cafe/issues"
+  },
+  "homepage": "https://github.com/glitch-txs/react-cafe#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "tsup": "^7.1.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=18",
+    "react": ">=18",
+    "typescript": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
+  }
+}
