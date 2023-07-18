@@ -2,7 +2,6 @@
 
 ### Install
 
-npm
 ```bash
 npm i react-cafe
 ```
@@ -22,8 +21,8 @@ export const store = createStore<MyStore>({
 
 ```tsx
 // src/components/Count.tsx
-import { store } from '@/store'
 import React from 'react'
+import { store } from '@/store'
 
 const Count = () => {
 
