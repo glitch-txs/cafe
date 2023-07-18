@@ -27,7 +27,7 @@ const Count = () => {
   const count = store.count()
 
   const increment = ()=>{
-    store.set.count((v: number) => v + 1)
+    store.set.count(p => p + 1)
   }
 
   return (
