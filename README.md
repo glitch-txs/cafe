@@ -1,7 +1,5 @@
 ## Getting Started
 
-### Install
-
 ```bash
 npm i react-cafe
 ```
