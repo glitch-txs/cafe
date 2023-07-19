@@ -57,7 +57,11 @@ export function createStore<TStates>(initialStore: TStates){
       states.set(state, val)
       handleCallbacks(state)
     }
+    
   }
 
-  return Object.create({ ...store, set: setter, sub: subscribe }) as Required<Store<TStates>> & { set: Required<SetValue<TStates>> }
+  return Object.create({ ...store, set: setter, sub: subscribe }) as 
+  Required<Store<TStates>> & 
+  { set: Required<SetValue<TStates>> } &
+  { sub: Required<Subscribe<TStates>> }
 }
