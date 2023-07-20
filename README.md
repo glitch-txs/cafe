@@ -1,5 +1,7 @@
 ## Getting Started
 
+Café is a global state manager for React and vanilla JavaScript
+
 # Vanilla JS
 
 ```bash
