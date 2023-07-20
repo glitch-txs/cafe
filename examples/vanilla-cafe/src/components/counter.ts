@@ -3,15 +3,14 @@ import {customElement, state} from 'lit/decorators.js';
 import { store } from '../store';
 
 @customElement('view-counter')
-export class SimpleGreeting extends LitElement {
-  // Define scoped styles right with your component, in plain CSS
+export class ViewCounter extends LitElement {
+
   static styles = css`
     :host {
       color: #fff;
     }
   `;
 
-  // Declare reactive properties
   @state() count: number = 0;
   unsub?: ()=>void;
 
