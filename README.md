@@ -1,4 +1,4 @@
-## Getting Started
+## Café
 
 Café is a global state manager for React and vanilla JavaScript
 
