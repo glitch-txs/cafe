@@ -13,6 +13,7 @@
     "vite": "^4.4.0"
   },
   "dependencies": {
-    "lit": "^2.7.6"
+    "lit": "^2.7.6",
+    "vanilla-cafe": "^0.0.0"
   }
 }
