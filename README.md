@@ -9,20 +9,16 @@ npm i vanilla-cafe
 ```
 
 ```ts
-// src/store/index.ts
+// src/store/index.js
 import { createStore } from "vanilla-cafe";
 
-type MyStore = {
-  count: number
-}
-
-export const store = createStore<MyStore>({
+export const store = createStore({
   count: 0
 })
 ```
 
 ```tsx
-// src/components/Count.ts
+// src/components/Count.js
 import { store } from '../store';
 
 /* --------change value--------- */
@@ -33,11 +29,11 @@ function increment(){
 /*----------subscribe-----------*/
 let count = 0;
 
-function handleCountChange(newValue: number){
+function handleCountChange(newValue){
   count = newValue
 }
 
-const unsubscribe = store.sub.count(this.handleCountChange.bind(this))
+const unsubscribe = store.sub.count(handleCountChange)
 ```
 
 # React
