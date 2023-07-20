@@ -2,7 +2,7 @@ type Subscribe<T> = {
   [key in keyof T]?: (cb: Callback<T>)=>()=>void
 }
 
-type Callback<T> = (state?: T[keyof T])=>unknown
+type Callback<T> = (state: T[keyof T])=>unknown
 
 type SetFn<T> = (prev: T)=>unknown
 
@@ -24,7 +24,7 @@ export function createStore<TStates>(initialStore: TStates){
   const callbacks = new Map<keyof TStates, Map<string, Callback<TStates>>>()
   
   const handleCallbacks = (state: keyof TStates)=>{
-    callbacks.get(state)?.forEach(cb =>{ cb(states.get(state)) })
+    callbacks.get(state)?.forEach(cb =>{ cb(states.get(state) as TStates[keyof TStates]) })
   };
 
   for(const state in initialStore){
