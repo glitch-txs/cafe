@@ -12,18 +12,18 @@ npm i vanilla-cafe
 // src/store/index.js
 import { createStore } from "vanilla-cafe";
 
-export const store = createStore({
+export const { set, sub, states } = createStore({
   count: 0
 })
 ```
 
 ```tsx
 // src/components/Count.js
-import { store } from '../store';
+import { set, sub, state } from '../store';
 
 /* --------change value--------- */
 function increment(){
-  store.set.count(p => p + 1)
+  set.count(p => p + 1)
 }
 
 /*----------subscribe-----------*/
@@ -33,11 +33,11 @@ function handleCountChange(newValue){
   count = newValue
 }
 
-const unsubscribe = store.sub.count(handleCountChange)
+const unsubscribe = sub.count(handleCountChange)
 
 /*------get current value-------*/
 
-const count = store.count()
+const count = states.count()
 ```
 
 # React
@@ -53,7 +53,7 @@ type MyStore = {
   count: number
 }
 
-export const store = createStore<MyStore>({
+export const { set, states } = createStore<MyStore>({
   count: 0
 })
 ```
@@ -61,14 +61,14 @@ export const store = createStore<MyStore>({
 ```tsx
 // src/components/Count.tsx
 import React from 'react'
-import { store } from '@/store'
+import { set, states } from '@/store'
 
 const Count = () => {
 
-  const count = store.count()
+  const count = states.count()
 
   const increment = ()=>{
-    store.set.count(p => p + 1)
+    set.count(p => p + 1)
   }
 
   return (

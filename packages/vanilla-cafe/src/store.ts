@@ -17,7 +17,7 @@ type Store<TStates> = {
 export function createStore<TStates>(initialStore: TStates){
   
   let setter: SetValue<TStates> = {};
-  let store: Store<TStates> = {};
+  let getter: Store<TStates> = {};
   let subscribe: Subscribe<TStates> = {};
 
   const states = new Map<keyof TStates, TStates[keyof TStates]>()
@@ -30,7 +30,7 @@ export function createStore<TStates>(initialStore: TStates){
   for(const state in initialStore){
     states.set(state, initialStore[state])
     //@ts-ignore - state key, key value are not correlated in types
-    store[state] = ()=>states.get(state)
+    getter[state] = ()=>states.get(state)
 
     subscribe[state] = (cb: Callback<TStates>)=>{
       const id = crypto.randomUUID()
@@ -60,8 +60,10 @@ export function createStore<TStates>(initialStore: TStates){
     
   }
 
-  return Object.create({ ...store, set: setter, sub: subscribe }) as 
-  Required<Store<TStates>> & 
-  { set: Required<SetValue<TStates>> } &
-  { sub: Required<Subscribe<TStates>> }
+  return Object.create({ states: getter, set: setter, sub: subscribe }) as 
+  { 
+    states: Required<Store<TStates>>,
+    set: Required<SetValue<TStates>>,
+    sub: Required<Subscribe<TStates>>
+  }
 }

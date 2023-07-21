@@ -1,6 +1,6 @@
 import {LitElement, css, html} from 'lit';
 import {customElement, state} from 'lit/decorators.js';
-import { store } from '../store';
+import { states, sub } from '../store';
 
 @customElement('view-counter')
 export class ViewCounter extends LitElement {
@@ -11,16 +11,16 @@ export class ViewCounter extends LitElement {
     }
   `;
 
-  @state() count: number = 0;
+  @state() count: number = states.count();
   unsub?: ()=>void;
 
-  handleCountChange(count: number){
-    this.count = count
+  handleCountChange(newCount: number){
+    this.count = newCount
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.unsub = store.sub.count(this.handleCountChange.bind(this))
+    this.unsub = sub.count(this.handleCountChange.bind(this))
   }
   disconnectedCallback() {
     this.unsub?.()

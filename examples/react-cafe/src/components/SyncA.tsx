@@ -1,14 +1,14 @@
-import { store } from '@/store'
+import { set, states } from '@/store'
 import React from 'react'
 
 const SyncA = () => {
 
-  const count = store.count()
+  const count = states.count()
   console.log("Render A")
 
   return (
     <div>
-      <button onClick={()=>store.set.count(p => p + 1)} >Count</button>
+      <button onClick={()=>set.count(p => p + 1)} >Count</button>
       {count}
     </div>
   )
