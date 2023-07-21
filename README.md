@@ -35,7 +35,6 @@ function handleCountChange(newValue){
 
 const unsubscribe = store.sub.count(handleCountChange)
 
-
 /*------get current value-------*/
 
 const count = store.count()
