@@ -15,7 +15,7 @@ type Store<TStates> = {
 export function createStore<TStates>(initialStore: TStates){
   
   let setter: SetValue<TStates> = {};
-  let store: Store<TStates> = {};
+  let getter: Store<TStates> = {};
 
   const states = new Map<keyof TStates, TStates[keyof TStates]>()
   const callbacks = new Map<keyof TStates, Map<string, Subscribe>>()
@@ -46,7 +46,7 @@ export function createStore<TStates>(initialStore: TStates){
   for(const state in initialStore){
     states.set(state, initialStore[state])
     //@ts-ignore - state key, key value are not correlated in types
-    store[state] = ()=>useSyncExternalStore(subscribe(state), ()=>states.get(state), ()=>initialStore[state])
+    getter[state] = ()=>useSyncExternalStore(subscribe(state), ()=>states.get(state), ()=>initialStore[state])
 
     setter[state] = (val)=>{
       if(typeof val === 'function'){
@@ -61,5 +61,9 @@ export function createStore<TStates>(initialStore: TStates){
     }
   }
 
-  return Object.create({...store, set:setter}) as Required<Store<TStates>> & { set: Required<SetValue<TStates>> }
+  return Object.create({ states: getter, set: setter }) as 
+  { 
+    states: Required<Store<TStates>>,
+    set: Required<SetValue<TStates>>
+  }
 }
