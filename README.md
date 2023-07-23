@@ -58,7 +58,7 @@ export const { set, sub, states } = createStore({
   count: 0
 })
 ```
-### Update States
+### Update states
 ```ts
 import { set, sub, state } from '../store';
 
