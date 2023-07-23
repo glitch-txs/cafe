@@ -18,26 +18,25 @@ export function createStore<TStates>(initialStore: TStates){
   let getter: Store<TStates> = {};
 
   const states = new Map<keyof TStates, TStates[keyof TStates]>()
-  const callbacks = new Map<keyof TStates, Map<string, Subscribe>>()
+  const callbacks = new Map<keyof TStates, Set<Subscribe>>()
   
   const handleCallbacks = (state: keyof TStates)=>{
     callbacks.get(state)?.forEach(cb =>{ cb() })
   };
 
   const subscribe = (state: keyof TStates)=>{
-    const id = crypto.randomUUID()
     
     return (cb: Subscribe)=>{
       if(callbacks.has(state)){
-        callbacks.get(state)?.set(id, cb)
+        callbacks.get(state)?.add(cb)
       }else{
-        const providerCallbacks = new Map<string,Subscribe>()
-        providerCallbacks.set(id, cb)
+        const providerCallbacks = new Set<Subscribe>()
+        providerCallbacks.add(cb)
         callbacks.set(state, providerCallbacks)
       }
 
       return ()=>{
-        callbacks.get(state)?.delete(id)
+        callbacks.get(state)?.delete(cb)
       }
     }
 
