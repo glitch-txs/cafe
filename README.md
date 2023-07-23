@@ -8,7 +8,7 @@ Café is a global state manager for React and vanilla JavaScript
 npm i react-cafe
 ```
 
-### Create store
+### Create a store
 ```ts
 // src/store/index.ts
 import { createStore } from "react-cafe";
