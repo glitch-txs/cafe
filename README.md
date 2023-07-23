@@ -50,26 +50,24 @@ export default Count
 ```bash
 npm i vanilla-cafe
 ```
-
+### Create a store
 ```ts
-// src/store/index.js
 import { createStore } from "vanilla-cafe";
 
 export const { set, sub, states } = createStore({
   count: 0
 })
 ```
-
-```tsx
-// src/components/Count.js
+### Update States
+```ts
 import { set, sub, state } from '../store';
 
-/* --------change value--------- */
 function increment(){
   set.count(p => p + 1)
 }
-
-/*----------subscribe-----------*/
+```
+### Subscribe to changes
+```ts
 let count = 0;
 
 function handleCountChange(newValue){
@@ -77,8 +75,8 @@ function handleCountChange(newValue){
 }
 
 const unsubscribe = sub.count(handleCountChange)
-
-/*------get current value-------*/
-
+```
+### Get the current state's value
+```ts
 const count = states.count()
 ```
