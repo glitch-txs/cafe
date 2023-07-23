@@ -59,9 +59,9 @@ export function createStore<TStates>(initialStore: TStates){
     
   }
 
-  return Object.create({ states: getter, set: setter, sub: subscribe }) as 
+  return Object.create({ snap: getter, set: setter, sub: subscribe }) as 
   { 
-    states: Required<Store<TStates>>,
+    snap: Required<Store<TStates>>,
     set: Required<SetValue<TStates>>,
     sub: Required<Subscribe<TStates>>
   }
