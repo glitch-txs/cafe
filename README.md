@@ -26,7 +26,7 @@ export const { set, states } = createStore<MyStore>({
 import React from 'react'
 import { set, states } from '@/store'
 
-const Count = () => {
+const Counter = () => {
 
   const count = states.count()
 
@@ -42,7 +42,7 @@ const Count = () => {
   )
 }
 
-export default Count
+export default Counter
 ```
 
 # Vanilla JS ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vanilla-cafe)
