@@ -22,7 +22,7 @@ export const { set, states } = createStore<MyStore>({
 ```
 
 ```tsx
-// src/components/Count.tsx
+// src/components/Counter.tsx
 import React from 'react'
 import { set, states } from '@/store'
 
