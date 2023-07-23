@@ -2,7 +2,8 @@
 
 Café is a global state manager for React and vanilla JavaScript
 
-# React
+# React ![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-cafe)
+
 ```bash
 npm i react-cafe
 ```
@@ -44,7 +45,7 @@ const Count = () => {
 export default Count
 ```
 
-# Vanilla JS
+# Vanilla JS ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vanilla-cafe)
 
 ```bash
 npm i vanilla-cafe
