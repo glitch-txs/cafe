@@ -8,7 +8,7 @@ Café is a global state manager for React and vanilla JavaScript
 npm i react-cafe
 ```
 
-Create store
+### Create store
 ```ts
 // src/store/index.ts
 import { createStore } from "react-cafe";
@@ -22,11 +22,11 @@ export const { set, states, snap } = createStore<MyStore>({
 })
 ```
 
-Use in any React Component
+### Use in any React Component
 ```tsx
 // src/components/Counter.tsx
 import React from 'react'
-import { set, states } from '@/store'
+import { set, states } from '../store'
 
 const Counter = () => {
 
@@ -46,10 +46,10 @@ const Counter = () => {
 
 export default Counter
 ```
-Use outside React
+### Use outside React
 ```tsx
 // src/utils/vanilla.ts
-import { set, snap } from '@/store'
+import { set, snap } from '../store'
 
 const count = snap.count() // Get a snapshot of the current value
 
