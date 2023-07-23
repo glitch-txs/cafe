@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "lit": "^2.7.6",
-    "vanilla-cafe": "^0.1.0"
+    "vanilla-cafe": "^0.1.2"
   }
 }
