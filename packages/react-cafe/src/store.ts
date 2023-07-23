@@ -16,6 +16,7 @@ export function createStore<TStates>(initialStore: TStates){
   
   let setter: SetValue<TStates> = {};
   let getter: Store<TStates> = {};
+  let snapshot: Store<TStates> = {};
 
   const states = new Map<keyof TStates, TStates[keyof TStates]>()
   const callbacks = new Map<keyof TStates, Set<Subscribe>>()
@@ -46,6 +47,8 @@ export function createStore<TStates>(initialStore: TStates){
     states.set(state, initialStore[state])
     //@ts-ignore - state key, key value are not correlated in types
     getter[state] = ()=>useSyncExternalStore(subscribe(state), ()=>states.get(state), ()=>initialStore[state])
+    //@ts-ignore - state key, key value are not correlated in types
+    snapshot[state] = ()=>states.get(state)
 
     setter[state] = (val)=>{
       if(typeof val === 'function'){
@@ -60,9 +63,10 @@ export function createStore<TStates>(initialStore: TStates){
     }
   }
 
-  return Object.create({ states: getter, set: setter }) as 
+  return Object.create({ states: getter, set: setter, snap: snapshot }) as 
   { 
     states: Required<Store<TStates>>,
-    set: Required<SetValue<TStates>>
+    set: Required<SetValue<TStates>>,
+    snap: Required<Store<TStates>>
   }
 }
