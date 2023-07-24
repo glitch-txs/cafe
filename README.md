@@ -17,7 +17,7 @@ type MyStore = {
   count: number
 }
 
-export const { set, states, snap } = createStore<MyStore>({
+export const { set, states, get } = createStore<MyStore>({
   count: 0
 })
 ```
@@ -49,9 +49,9 @@ export default Counter
 ### Use outside React
 ```tsx
 // src/utils/vanilla.ts
-import { set, snap } from '../store'
+import { set, get } from '../store'
 
-const count = snap.count() // Get a snapshot of the current value
+const count = get.count() // Get a snapshot of the current value
 
 set.count(p => p + 1) // Update state
 
@@ -66,13 +66,13 @@ npm i vanilla-cafe
 ```ts
 import { createStore } from "vanilla-cafe";
 
-export const { set, sub, snap } = createStore({
+export const { set, sub, get } = createStore({
   count: 0
 })
 ```
 ### Update states
 ```ts
-import { set, sub, snap } from '../store';
+import { set, sub, get } from '../store';
 
 function increment(){
   set.count(p => p + 1)
@@ -90,5 +90,5 @@ const unsubscribe = sub.count(handleCountChange)
 ```
 ### Get the current state's value
 ```ts
-const count = snap.count()
+const count = get.count()
 ```
