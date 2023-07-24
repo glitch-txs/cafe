@@ -1,6 +1,6 @@
 import {LitElement, css, html} from 'lit';
 import {customElement, state} from 'lit/decorators.js';
-import { snap, sub } from '../store';
+import { get, sub } from '../store';
 
 @customElement('view-counter')
 export class ViewCounter extends LitElement {
@@ -11,7 +11,7 @@ export class ViewCounter extends LitElement {
     }
   `;
 
-  @state() count: number = snap.count();
+  @state() count: number = get.count();
   unsub?: ()=>void;
 
   handleCountChange(newCount: number){
