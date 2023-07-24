@@ -11,7 +11,7 @@ type MyStore = {
   count: number
 }
 
-export const { set, states, get } = createStore<MyStore>({
+export const { set, states, snap } = createStore<MyStore>({
   count: 0
 })
 ```
@@ -43,10 +43,14 @@ export default Counter
 ### Use outside React
 ```tsx
 // src/utils/vanilla.ts
-import { set, get } from '../store'
+import { set, snap } from '../store'
 
-const count = get.count() // Get a snapshot of the current value
+const count = snap.count() // Get a snapshot of the current value
 
 set.count(p => p + 1) // Update state
 
 ```
+
+### Considerations
+
+- **states** is an object of hooks, they can only be called inside React components.
