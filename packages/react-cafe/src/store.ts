@@ -2,14 +2,14 @@ import { useSyncExternalStore } from "react";
 
 type Subscribe = (()=>unknown)
 
-type SetFn<T> = (prev: T)=>unknown
+type Callback<T> = (prev: T)=>unknown
 
 type SetValue<TStates> = {
-  [key in keyof TStates]?: (newVal: TStates[key] | SetFn<TStates[key]>)=>void
+  [key in keyof TStates]?: (state: TStates[key] | Callback<TStates[key]>)=>void
 }
 
 type Store<TStates> = {
-  [key in keyof TStates]?: (()=>TStates[key] | undefined)
+  [key in keyof TStates]?: ()=>TStates[key]
 }
 
 export function createStore<TStates>(initialStore: TStates){
