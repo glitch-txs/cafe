@@ -1,6 +1,6 @@
 {
   "name": "vanilla-cafe",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Global State Manager for Vanilla JS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
