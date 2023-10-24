@@ -12,9 +12,11 @@ type Store<TStates> = {
   [key in keyof TStates]?: ()=>TStates[key]
 }
 
-type Sub<TStates> = {
-  [key in keyof TStates]?: (cb: Subscribe)=>(() => void)
+type Sub<T> = {
+  [key in keyof T]?: (cb: Callback<T[key]>)=>()=>void
 }
+
+type ExValue<T> = T[Extract<keyof T, string>]
 
 export function createStore<TStates>(initialStore: TStates){
   
@@ -24,19 +26,19 @@ export function createStore<TStates>(initialStore: TStates){
   let sub: Sub<TStates> = {};
 
   const states = new Map<keyof TStates, TStates[keyof TStates]>()
-  const callbacks = new Map<keyof TStates, Set<Subscribe>>()
+  const callbacks = new Map<keyof TStates, Set<Callback<ExValue<TStates>>>>()
   
   const handleCallbacks = (state: keyof TStates)=>{
-    callbacks.get(state)?.forEach(cb =>{ cb() })
+    callbacks.get(state)?.forEach(cb =>{ cb(states.get(state) as ExValue<TStates>) })
   };
 
   const subscribe = (state: keyof TStates)=>{
     
-    return (cb: Subscribe)=>{
+    return (cb: Callback<ExValue<TStates>>)=>{
       if(callbacks.has(state)){
         callbacks.get(state)?.add(cb)
       }else{
-        const providerCallbacks = new Set<Subscribe>()
+        const providerCallbacks = new Set<Callback<ExValue<TStates>>>()
         providerCallbacks.add(cb)
         callbacks.set(state, providerCallbacks)
       }
