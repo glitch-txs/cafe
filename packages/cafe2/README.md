@@ -5,16 +5,16 @@ npm i vanilla-cafe
 ```ts
 import { createStore } from "vanilla-cafe";
 
-export const { set, sub, get } = createStore({
+export const myStore = createStore({
   count: 0
 })
 ```
 ### Update states
 ```ts
-import { set, sub, get } from '../store';
+import myStore from '../store';
 
 function increment(){
-  set.count(p => p + 1)
+  myStore.setCount(p => p + 1)
 }
 ```
 ### Subscribe to changes
@@ -25,8 +25,8 @@ function handleCountChange(newValue){
   count = newValue
 }
 
-const unsubscribe = sub.count(handleCountChange)
+const unsubscribe = myStore.subCount(handleCountChange)
 ```
 ### Get the current state's value
 ```ts
-const count = get.count()
+const count = myStore.getCount()
