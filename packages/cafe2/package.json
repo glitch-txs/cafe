@@ -1,26 +1,29 @@
 {
-  "name": "react-cafe",
-  "version": "1.0.0",
-  "description": "React Café is a global state manager for React applications.",
+  "name": "vanilla-cafe",
+  "version": "0.0.0",
+  "description": "Global State Manager for Vanilla JS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "type": "module",
   "scripts": {
+    "watch": "tsc -w",
     "build": "tsup",
-    "format": "pnpm dlx @biomejs/biome format src --write",
     "upload": "npm run build && npm publish --public"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/glitch-txs/cafe.git"
   },
   "keywords": [
+    "subcribe",
     "store",
-    "global",
-    "react"
+    "javascript",
+    "vanilla",
+    "state",
+    "global"
   ],
   "author": "glitch-txs",
   "license": "MIT",
@@ -28,24 +31,18 @@
     "url": "https://github.com/glitch-txs/cafe/issues"
   },
   "homepage": "https://github.com/glitch-txs/cafe#readme",
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
-    "@biomejs/biome": "1.5.3",
     "tsup": "^7.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=18",
-    "react": ">=18",
     "typescript": ">=5"
   },
   "peerDependenciesMeta": {
-    "@types/react": {
-      "optional": true
-    },
     "typescript": {
       "optional": true
+    },
+    "publishConfig": {
+      "access": "public"
     }
   }
 }
