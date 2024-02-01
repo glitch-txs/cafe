@@ -4,7 +4,7 @@ type MyStore = {
   count: number
   name: string
 }
-export const { set, states } = createStore<MyStore>({
+export const myStore = createStore<MyStore>({
   count: 0,
   name: 'c'
 })
