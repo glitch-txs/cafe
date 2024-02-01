@@ -51,7 +51,3 @@ const count = myStore.getCount() // Get a snapshot of the current value
 myStore.setCount(p => p + 1) // Update state
 
 ```
-
-### Considerations
-
-- **states** is an object of hooks, they can only be called inside React components.
