@@ -82,6 +82,6 @@ export function createStore<TStates>(initialStore: TStates) {
 
 	return Object.create({ ...use, ...setter, ...getter, ...sub }) as Required<Getter<TStates>> &
 		Required<Setter<TStates>> &
-		Required<Getter<TStates>> &
+		Required<Use<TStates>> &
 		Required<Subscribe<TStates>>
 }

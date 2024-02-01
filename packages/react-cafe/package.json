@@ -1,6 +1,6 @@
 {
   "name": "react-cafe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Café is a global state manager for React applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
