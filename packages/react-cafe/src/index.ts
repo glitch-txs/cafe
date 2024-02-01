@@ -67,7 +67,7 @@ export function createStore<TStates>(initialStore: TStates) {
 		//@ts-ignore - state key, key value are not correlated in types
 		use[useState] = () => {
 			//@ts-ignore - no block ignore https://github.com/Microsoft/TypeScript/issues/19573
-			const state = useSyncExternalStore(
+			const _state = useSyncExternalStore(
 				//@ts-ignore
 				subscribe(state),
 				() => states.get(state),
@@ -76,7 +76,7 @@ export function createStore<TStates>(initialStore: TStates) {
 			)
 
 			//@ts-ignore - no block ignore https://github.com/Microsoft/TypeScript/issues/19573
-			return [state, setter[setState]]
+			return [_state, setter[setState]]
 		}
 	}
 
