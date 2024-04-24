@@ -18,8 +18,7 @@ type MyStore = {
 }
 
 export const myStore = createStore<MyStore>({
-  count: 0,
-  name: 'John'
+  count: 0
 })
 ```
 
